@@ -165,7 +165,13 @@ class Application(tk.Tk):
         # イベントハンドラー生成
         EventHandller(self, game)
 
+def main():
+    'main関数'
+
+    # GUIアプリ生成
+    app = Application()
+    app.mainloop()
+
+
 if __name__ == "__main__":
-    root = tk.Tk()
-    game = TetrisGame(root)
-    root.mainloop()
+    main()
