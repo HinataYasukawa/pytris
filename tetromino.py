@@ -60,6 +60,12 @@ class TetrisBlock():
                 [FIELD_WIDTH / 2, 2],
                 [FIELD_WIDTH / 2, 3],
             ]
+            self.shape = [
+                [1,0],
+                [1,0],
+                [1,0],
+                [1,0]
+            ]
         elif block_type == 2:
             color = "blue"
             cords = [
@@ -67,6 +73,10 @@ class TetrisBlock():
                 [FIELD_WIDTH / 2, 1],
                 [FIELD_WIDTH / 2 - 1, 0],
                 [FIELD_WIDTH / 2 - 1, 1],
+            ]
+            self.shape = [
+                [1,1],
+                [1,1]
             ]
         elif block_type == 3:
             color = "green"
@@ -76,6 +86,12 @@ class TetrisBlock():
                 [FIELD_WIDTH / 2, 1],
                 [FIELD_WIDTH / 2, 2],
             ]
+            self.shape = [
+                [1,1],
+                [1,0],
+                [1,0],
+                [0,0]
+            ]
         elif block_type == 4:
             color = "orange"
             cords = [
@@ -83,6 +99,12 @@ class TetrisBlock():
                 [FIELD_WIDTH / 2 - 1, 0],
                 [FIELD_WIDTH / 2 - 1, 1],
                 [FIELD_WIDTH / 2 - 1, 2],
+            ]
+            self.shape = [
+                [1,1],
+                [0,1],
+                [0,1],
+                [0,0]
             ]
 
         # 決定した色と座標の正方形を作成してリストに追加
@@ -102,3 +124,12 @@ class TetrisBlock():
         for square in self.squares:
             x, y = square.get_moved_cord(direction)
             square.set_cord(x, y)
+
+    def turn(self, block):
+        'ブロックを回転'
+
+        #ブロックの行列入れ替えて逆
+        for square in self.squares:
+
+            self.turnedShape = [list(reversed(col)) for col in zip(*block)]
+            return self.turnedShape

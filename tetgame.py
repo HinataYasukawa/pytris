@@ -1,6 +1,6 @@
 import tkinter as tk
 from constants import BLOCK_SIZE, FIELD_WIDTH, FIELD_HEIGHT
-from tetromino import TetrisBlock
+from tetromino import TetrisBlock, turn
 from board import TetrisField, TetrisCanvas
 from constants import FIELD_WIDTH, MOVE_LEFT, MOVE_RIGHT, MOVE_DOWN
 
@@ -64,6 +64,9 @@ class TetrisGame():
                 self.field.fix_block(self.block)
                 self.field.delete_line()
                 self.new_block()
+
+    def turn_block(self, direction):
+        self.block.turn(direction)
 
 class EventHandller():
     def __init__(self, master, game):
